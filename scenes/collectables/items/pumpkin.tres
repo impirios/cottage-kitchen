@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CollectableItem" load_steps=3 format=3 uid="uid://byoqq3fn5ac4t"]
+
+[ext_resource type="Texture2D" uid="uid://byjxel1xbeaaq" path="res://assets/collectables/pumpkin.png" id="1_1ncd7"]
+[ext_resource type="Script" path="res://scenes/pickables/collectable_item.gd" id="2_br014"]
+
+[resource]
+script = ExtResource("2_br014")
+item_name = "pumpkin"
+item_texture = ExtResource("1_1ncd7")

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="InventoryItems" load_steps=2 format=3 uid="uid://dtq6sjhqleek0"]
+
+[ext_resource type="Script" path="res://scenes/pickables/inventory_items.gd" id="2_nnfce"]
+
+[resource]
+script = ExtResource("2_nnfce")
+items = Array[Resource("res://scenes/pickables/inventory_item.gd")]([null, null, null, null, null, null, null, null, null])

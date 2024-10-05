@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://0e2oykkn1jc1"]
+
+[ext_resource type="Script" path="res://scenes/common/collectable_resource.gd" id="1_aaqtc"]
+[ext_resource type="Resource" uid="uid://byoqq3fn5ac4t" path="res://scenes/collectables/items/pumpkin.tres" id="2_01q1e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_72xnn"]
+radius = 12.0
+
+[node name="CollectableResource" type="Node2D"]
+script = ExtResource("1_aaqtc")
+resource = ExtResource("2_01q1e")
+
+[node name="SpriteContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_72xnn")
+
+[connection signal="body_entered" from="PickupArea" to="." method="_on_pickup_area_body_entered"]

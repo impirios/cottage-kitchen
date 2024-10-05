@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf1rgpyss3rto"]
+
+[ext_resource type="Script" path="res://scenes/common/resource_spawner.gd" id="1_hvlgg"]
+
+[node name="ResourceSpawner" type="Marker2D"]
+script = ExtResource("1_hvlgg")
+randomise = null
+seed_type = null

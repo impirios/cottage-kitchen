@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://bklx1ibq8g0bd"]
+
+[ext_resource type="Script" path="res://scenes/pet/pet.gd" id="1_v2l4u"]
+[ext_resource type="Texture2D" uid="uid://vokpcsigp8mi" path="res://assets/pets/arlo/arlo-spritesheet.png" id="2_y84cy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_j830p"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xgr8h"]
+radius = 50.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6doic"]
+atlas = ExtResource("2_y84cy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtl5t"]
+atlas = ExtResource("2_y84cy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7md5"]
+atlas = ExtResource("2_y84cy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8mse"]
+atlas = ExtResource("2_y84cy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8f7y"]
+atlas = ExtResource("2_y84cy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydd0m"]
+atlas = ExtResource("2_y84cy")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14tww"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6doic")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtl5t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7md5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8mse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r8f7y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydd0m")
+}],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+}]
+
+[node name="Arlo" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 16
+script = ExtResource("1_v2l4u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_j830p")
+debug_color = Color(0.933333, 0.152941, 0.521569, 0.419608)
+
+[node name="FieldView" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FieldView"]
+shape = SubResource("CircleShape2D_xgr8h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -9)
+sprite_frames = SubResource("SpriteFrames_14tww")
+animation = &"run"
+frame_progress = 0.0201219
+
+[connection signal="body_entered" from="FieldView" to="." method="_on_area_2d_body_entered"]
