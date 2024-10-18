@@ -66,14 +66,3 @@ func add_item_at_available_index(item: InventoryItem):
 		# If no available index, append to the end
 		items.append(item)
 	item_added.emit()
-
-
-# func group_items_by_name():
-# 	var grouped_items: Dictionary = {}
-# 	for item in items:
-# 		var item_name = item.get_collected_item().get_item_name()
-# 		if item_name in grouped_items:
-# 			grouped_items[item_name] += item.get_item_count()
-# 		else:
-# 			grouped_items[item_name] = item.get_item_count()
-# 	return grouped_items

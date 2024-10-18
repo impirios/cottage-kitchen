@@ -65,6 +65,7 @@ animations = [{
 }]
 
 [node name="Arlo" type="CharacterBody2D"]
+position = Vector2(0, 3)
 collision_layer = 2
 collision_mask = 16
 script = ExtResource("1_v2l4u")

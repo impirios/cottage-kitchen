@@ -1,10 +1,13 @@
 extends Control
 class_name InventorySlot
 @export var inventory_item: InventoryItem = null
+@export var index = 0
 
+# var inventory_service: InventoryItems = null
 @onready var sprite_container: CenterContainer = $SpriteContainer
 @onready var count_container: CenterContainer = $CountContainer
 
+signal item_updated
 const SLOT_SIZE = 64
 
 
@@ -24,8 +27,15 @@ func _load_item_count():
 	count_container.add_child(count_label)
 
 func _ready():
+	# set_process_input(true)
 	if inventory_item && sprite_container:
 		_load_inventory_item()
+
+
+func _process(_delta):
+	# if is_visible_in_tree() && Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+	# 	print("BUTTON CLICKED")
+	pass
 
 
 func _load_inventory_item():
@@ -38,3 +48,25 @@ func _load_inventory_item():
 
 func set_inventory_item(item: InventoryItem):
 	inventory_item = item
+
+func set_index(i):
+	index = i
+
+func pickup_slot_func(callback: Callable):
+	callback.call()
+	item_updated.emit()
+
+
+func _handle_input(viewport, event, shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and is_visible_in_tree():
+			print("Control node", index, " clicked!")
+
+
+func _on_area_2d_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_texture_button_button_up():
+	#send signal to inventory item or inventory ui.
+	pass # Replace with function body.

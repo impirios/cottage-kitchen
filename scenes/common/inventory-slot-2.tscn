@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvugp2h750wdd"]
+
+[ext_resource type="Script" path="res://scenes/common/inventory-slot-2.gd" id="1_evt3u"]
+[ext_resource type="Texture2D" uid="uid://bfqlte6uhqtws" path="res://assets/collectables/inventoryslot.png" id="1_pfeks"]
+[ext_resource type="Script" path="res://scenes/common/pickup-area.gd" id="3_ds5u2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e7wfp"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_evt3u")
+
+[node name="Inventoryslot" type="Sprite2D" parent="."]
+scale = Vector2(0.279181, 0.279181)
+texture = ExtResource("1_pfeks")
+
+[node name="SpriteMarker" type="Marker2D" parent="Inventoryslot"]
+
+[node name="CountMarker" type="Marker2D" parent="Inventoryslot"]
+position = Vector2(10.7457, 7.16382)
+
+[node name="PickupArea" type="Area2D" parent="."]
+script = ExtResource("3_ds5u2")
+pickup_callback = null
+drop_callback = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("RectangleShape2D_e7wfp")
+
+[connection signal="mouse_entered" from="PickupArea" to="PickupArea" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="PickupArea" to="PickupArea" method="_on_mouse_exited"]

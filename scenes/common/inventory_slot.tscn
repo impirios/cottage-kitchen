@@ -1,13 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://by70ev1hfvkma"]
+[gd_scene load_steps=2 format=3 uid="uid://by70ev1hfvkma"]
 
 [ext_resource type="Script" path="res://scenes/common/inventory_slot.gd" id="1_8c54o"]
-[ext_resource type="Resource" uid="uid://c7842t170i3v2" path="res://scenes/collectables/items/carrot.tres" id="2_3038l"]
-[ext_resource type="Script" path="res://scenes/pickables/inventory_item.gd" id="3_u4fee"]
-
-[sub_resource type="Resource" id="Resource_03q4w"]
-script = ExtResource("3_u4fee")
-collected_item = ExtResource("2_3038l")
-item_count = 12
 
 [node name="Control" type="Control"]
 custom_minimum_size = Vector2(20, 20)
@@ -18,11 +11,11 @@ offset_bottom = 20.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_8c54o")
-inventory_item = SubResource("Resource_03q4w")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 23.0
+offset_left = -1.0
+offset_right = 22.0
 offset_bottom = 23.0
 
 [node name="SpriteContainer" type="CenterContainer" parent="."]
@@ -51,3 +44,12 @@ offset_left = 0.679999
 offset_top = -0.420001
 offset_right = 8.1
 offset_bottom = 8.0
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.507412, 0.522441)
+button_mask = 3
+
+[connection signal="button_up" from="TextureButton" to="." method="_on_texture_button_button_up"]

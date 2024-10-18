@@ -4,5 +4,3 @@
 
 [node name="ResourceSpawner" type="Marker2D"]
 script = ExtResource("1_hvlgg")
-randomise = null
-seed_type = null

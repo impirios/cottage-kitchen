@@ -25,29 +25,14 @@ offset_right = 40.0
 offset_bottom = 40.0
 columns = 3
 
-[node name="Control" parent="GridContainer" instance=ExtResource("2_bq5cn")]
+[node name="Node2D" parent="GridContainer" instance=ExtResource("2_bq5cn")]
 layout_mode = 2
 
-[node name="Control2" parent="GridContainer" instance=ExtResource("2_bq5cn")]
+[node name="Node2D2" parent="GridContainer" instance=ExtResource("2_bq5cn")]
 layout_mode = 2
 
-[node name="Control3" parent="GridContainer" instance=ExtResource("2_bq5cn")]
+[node name="Node2D3" parent="GridContainer" instance=ExtResource("2_bq5cn")]
 layout_mode = 2
 
-[node name="Control4" parent="GridContainer" instance=ExtResource("2_bq5cn")]
-layout_mode = 2
-
-[node name="Control5" parent="GridContainer" instance=ExtResource("2_bq5cn")]
-layout_mode = 2
-
-[node name="Control6" parent="GridContainer" instance=ExtResource("2_bq5cn")]
-layout_mode = 2
-
-[node name="Control7" parent="GridContainer" instance=ExtResource("2_bq5cn")]
-layout_mode = 2
-
-[node name="Control8" parent="GridContainer" instance=ExtResource("2_bq5cn")]
-layout_mode = 2
-
-[node name="Control9" parent="GridContainer" instance=ExtResource("2_bq5cn")]
+[node name="Node2D4" parent="GridContainer" instance=ExtResource("2_bq5cn")]
 layout_mode = 2

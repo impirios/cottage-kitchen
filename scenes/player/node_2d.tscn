@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://pv3oav4078lw" path="res://assets/player/RUN/base_run_strip8.png" id="2_mm36f"]
 [ext_resource type="Resource" uid="uid://dtq6sjhqleek0" path="res://scenes/player/player_inventory.tres" id="2_v3po0"]
 [ext_resource type="Texture2D" uid="uid://dk0or1gxo87jo" path="res://assets/player/WALKING/base_walk_strip8.png" id="3_tsyu7"]
-[ext_resource type="PackedScene" uid="uid://dwm4gohtn778a" path="res://scenes/common/inventory_ui.tscn" id="6_2t1bb"]
+[ext_resource type="PackedScene" uid="uid://bwv4k8df0bn66" path="res://scenes/common/inventory_grid.tscn" id="7_b5y1k"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_donic"]
 radius = 6.0
@@ -206,7 +206,7 @@ animations = [{
 
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["can_pickup_resource", "player"]]
 collision_layer = 2
-collision_mask = 18
+collision_mask = 22
 script = ExtResource("1_6207v")
 inventory = ExtResource("2_v3po0")
 
@@ -222,9 +222,6 @@ frame_progress = 0.993317
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
-[node name="Inventory" parent="." instance=ExtResource("6_2t1bb")]
-offset_left = -34.0
-offset_top = -81.0
-offset_right = 32.0
-offset_bottom = -1.0
+[node name="InventoryGrid" parent="." instance=ExtResource("7_b5y1k")]
+position = Vector2(0, -44)
 inventory_items = ExtResource("2_v3po0")

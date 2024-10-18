@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://blmnt0re3ytwe"]
+
+[ext_resource type="Script" path="res://scenes/player/pickup_slot.gd" id="1_0nxhs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hkf5b"]
+size = Vector2(4, 4)
+
+[node name="PickupSlot" type="Node2D"]
+top_level = true
+z_index = 7
+scale = Vector2(2.487, 2.487)
+script = ExtResource("1_0nxhs")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_hkf5b")
+debug_color = Color(0.984314, 0, 0.337255, 0.419608)
+
+[node name="Inventoryslot" type="Sprite2D" parent="."]
+scale = Vector2(0.279181, 0.279181)
+
+[node name="SpriteMarker" type="Marker2D" parent="Inventoryslot"]
+
+[node name="CountMarker" type="Marker2D" parent="Inventoryslot"]
+position = Vector2(10.7457, 7.16382)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
