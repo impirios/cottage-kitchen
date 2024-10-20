@@ -1,11 +1,12 @@
 extends Node2D
 class_name PickupSlot
 
-var inventory_item: InventoryItem = null
+var pickup_slot_item: InventoryItem = null
 
 # var inventory_service: InventoryItems = null
 @onready var sprite_marker: Marker2D = $Inventoryslot/SpriteMarker
 @onready var count_marker: Marker2D = $Inventoryslot/CountMarker
+
 
 const SLOT_SIZE = 64
 
@@ -18,7 +19,7 @@ func _load_item_sprite(item_sprite: Sprite2D):
 
 func _load_item_count():
 	var count_label = Label.new()
-	count_label.text = str(inventory_item.get_item_count())
+	count_label.text = str(pickup_slot_item.get_item_count())
 	count_label.add_theme_color_override("font_color", Color.WHITE)
 	count_label.add_theme_font_size_override("font_size", 22)
 	count_label.add_theme_constant_override("outline_size", 1)
@@ -36,45 +37,46 @@ func _process(_delta):
 	global_position = mouse_pos
 
 
-func _load_inventory_item():
-	var collected_item: CollectableItem = inventory_item.get_collected_item()
-	if collected_item:
-		var item_sprite: Sprite2D = collected_item.get_item_sprite()
-		_load_item_sprite(item_sprite)
-		_load_item_count()
-		print('loaded pickup slot')
+func _load_pickup_slot_item():
+	if pickup_slot_item && sprite_marker:
+		var collected_item: CollectableItem = pickup_slot_item.get_collected_item()
+		if collected_item:
+			var item_sprite: Sprite2D = collected_item.get_item_sprite()
+			_load_item_sprite(item_sprite)
+			_load_item_count()
 
-func _clear_inventory_item():
+func _clear_pickup_slot_item():
 	for child in sprite_marker.get_children():
 		child.queue_free()
 
 	for child in count_marker.get_children():
 		child.queue_free()
+	set_pickup_slot_item(null)
 
 
-func set_inventory_item(item: InventoryItem):
-	inventory_item = item
+func set_pickup_slot_item(item: InventoryItem):
+	pickup_slot_item = item
 ######
 
-func load_item(item):
-	set_inventory_item(item)
-	print("Loaded")
-	if inventory_item && sprite_marker:
-		_load_inventory_item()
+func load_item(item, index):
+	set_pickup_slot_item(item)
+	_load_pickup_slot_item()
 	pass
 
-func unload_item(item):
-	set_inventory_item(null)
-	print("Unload")
-	_clear_inventory_item()
-	if item:
-		load_item(item)
-	
+func unload_item(item, index):
+	_clear_pickup_slot_item()
+
+	# if item:
+	# 	load_item(item, index)
 	pass
 
 func is_loaded():
-	return inventory_item != null
+	return pickup_slot_item != null
+
+func get_pickup_item():
+	return pickup_slot_item
 
 #######
 func _on_area_2d_body_entered(body):
-	print(body)
+	# print(body)
+	pass

@@ -27,6 +27,7 @@ scale = Vector2(0.279181, 0.279181)
 [node name="SpriteMarker" type="Marker2D" parent="Inventoryslot"]
 
 [node name="CountMarker" type="Marker2D" parent="Inventoryslot"]
-position = Vector2(10.7457, 7.16382)
+position = Vector2(8.64151, 5.76101)
+scale = Vector2(0.5, 0.5)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

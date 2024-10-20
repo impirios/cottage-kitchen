@@ -3,6 +3,7 @@ var is_showing: bool = false
 @export var inventory_items: InventoryItems = null
 @onready var inventory_items_container: Node2D = $InventoryItemsContainer
 @onready var slot_scene = preload("res://scenes/common/inventory-slot-2.tscn")
+@onready var inventory_manager: InventoryManager = $InventoryManager
 
 const slot_length = 20
 const grid_length = 60
@@ -24,7 +25,7 @@ func _process(_delta):
 	pass
 
 func populate_inventory():
-	var slots = []
+	var slots: Array[InventorySlot2] = []
 
 	# clear slots
 	for child in inventory_items_container.get_children():
@@ -36,6 +37,8 @@ func populate_inventory():
 		slot_instance.set_inventory_item(item)
 		slot_instance.set_index(index)
 		slots.push_back(slot_instance)
+	
+	
 	##### render slots
 	var row = 0
 	var col = 0
@@ -47,6 +50,12 @@ func populate_inventory():
 			slots[index].position = slots[index].position + Vector2(slot_length * col, row * slot_length)
 		inventory_items_container.add_child(slots[index])
 		col += 1
+	
+	print("init inventory manager")
+	inventory_manager.destructure()
+	inventory_manager.set_slots(slots)
+	inventory_manager.inventory_items = inventory_items
+	inventory_manager.initialise()
 
 
 func _update_inventory():

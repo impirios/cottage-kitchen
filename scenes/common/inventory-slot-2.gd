@@ -6,11 +6,11 @@ class_name InventorySlot2
 # var inventory_service: InventoryItems = null
 @onready var sprite_marker: Marker2D = $Inventoryslot/SpriteMarker
 @onready var count_marker: Marker2D = $Inventoryslot/CountMarker
-@onready var pickup_drag_area: Area2D = $PickupArea
+@onready var pickup_drag_area: PickupArea = $PickupArea
 
+@export var SLOT_SIZE: int = 10
 
 signal item_updated
-const SLOT_SIZE = 64
 
 
 func _load_item_sprite(item_sprite: Sprite2D):
@@ -31,10 +31,11 @@ func _load_item_count():
 	pass
 
 func _ready():
+	if pickup_drag_area:
+		pickup_drag_area.slot_index = index
+	
 	if inventory_item && sprite_marker:
 		_load_inventory_item()
-	pickup_drag_area.pickup_callback = pickup_callback
-	pickup_drag_area.drop_callback = drop_callback
 
 
 func _process(_delta):
@@ -50,6 +51,9 @@ func _load_inventory_item():
 		pickup_drag_area.item = inventory_item
 
 
+func get_pickup_area():
+	return pickup_drag_area
+
 func set_inventory_item(item: InventoryItem):
 	inventory_item = item
 
@@ -58,13 +62,8 @@ func set_index(i):
 
 #####################
 
-
-func pickup_callback():
-	print("pickup callback")
-	item_updated.emit()
-	pass
-
-func drop_callback():
-	print("drop callback")
-	item_updated.emit()
-	pass
+func get_extra_count(item_to_check):
+	var total_count = inventory_item.get_item_count() + item_to_check.get_item_count()
+	if (total_count > SLOT_SIZE):
+		return total_count - SLOT_SIZE
+	return 0

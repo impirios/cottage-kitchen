@@ -1,7 +1,22 @@
-[gd_resource type="Resource" script_class="InventoryItems" load_steps=2 format=3 uid="uid://dtq6sjhqleek0"]
+[gd_resource type="Resource" script_class="InventoryItems" load_steps=7 format=3 uid="uid://dtq6sjhqleek0"]
 
+[ext_resource type="Resource" uid="uid://c7842t170i3v2" path="res://scenes/collectables/items/carrot.tres" id="1_o8c68"]
+[ext_resource type="Script" path="res://scenes/pickables/inventory_item.gd" id="2_1ouru"]
 [ext_resource type="Script" path="res://scenes/pickables/inventory_items.gd" id="2_nnfce"]
+[ext_resource type="Resource" uid="uid://byoqq3fn5ac4t" path="res://scenes/collectables/items/pumpkin.tres" id="3_v3w77"]
+
+[sub_resource type="Resource" id="Resource_xe1hv"]
+script = ExtResource("2_1ouru")
+collected_item = ExtResource("1_o8c68")
+item_count = 4
+index = 0
+
+[sub_resource type="Resource" id="Resource_n3k1j"]
+script = ExtResource("2_1ouru")
+collected_item = ExtResource("3_v3w77")
+item_count = 5
+index = 1
 
 [resource]
 script = ExtResource("2_nnfce")
-items = Array[Resource("res://scenes/pickables/inventory_item.gd")]([null, null, null, null, null, null, null, null, null])
+items = Array[ExtResource("2_1ouru")]([SubResource("Resource_xe1hv"), SubResource("Resource_n3k1j"), null, null, null, null, null, null, null])
