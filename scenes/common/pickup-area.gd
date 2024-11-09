@@ -20,26 +20,26 @@ func _process(_delta):
 				var extra_count = get_parent().get_extra_count(dropped_item)
 				if (extra_count > 0):
 					var item_to_return = get_new_item(item.get_collected_item(), extra_count)
-					pickup_slot_service.unload_item(item, slot_index)
-					pickup_slot_service.load_item(item_to_return, slot_index)
+					pickup_slot_service.unload_item()
+					pickup_slot_service.load_item(item_to_return)
 					item_dropped.emit(get_new_item(item.get_collected_item(), (get_parent().SLOT_SIZE - item.get_item_count())), slot_index)
 				else:
-					pickup_slot_service.unload_item(item, slot_index)
+					pickup_slot_service.unload_item()
 					item_dropped.emit(get_new_item(dropped_item.get_collected_item(), dropped_item.get_item_count()), slot_index)
 			elif (item != null):
 				print("CASE 2")
 				var item_to_return = item
-				pickup_slot_service.unload_item(item, slot_index)
-				pickup_slot_service.load_item(item_to_return, slot_index)
+				pickup_slot_service.unload_item()
+				pickup_slot_service.load_item(item_to_return, )
 				item_dropped.emit(get_new_item(dropped_item.get_collected_item(), dropped_item.get_item_count()), slot_index)
 				pass
 			else:
 				print("CASE 3")
-				pickup_slot_service.unload_item(null, slot_index)
+				pickup_slot_service.unload_item()
 				item_dropped.emit(get_new_item(dropped_item.get_collected_item(), dropped_item.get_item_count()), slot_index)
 		elif !pickup_slot_service.is_loaded() and item != null:
 			print("CASE 4")
-			pickup_slot_service.load_item(item, slot_index)
+			pickup_slot_service.load_item(item)
 			item_picked_up.emit(slot_index)
 	pass
 

@@ -22,6 +22,7 @@ position = Vector2(10.7457, 7.16382)
 
 [node name="PickupArea" type="Area2D" parent="."]
 script = ExtResource("3_ds5u2")
+slot_index = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
 shape = SubResource("RectangleShape2D_e7wfp")

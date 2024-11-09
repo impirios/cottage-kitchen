@@ -58,12 +58,12 @@ func set_pickup_slot_item(item: InventoryItem):
 	pickup_slot_item = item
 ######
 
-func load_item(item, index):
+func load_item(item):
 	set_pickup_slot_item(item)
 	_load_pickup_slot_item()
 	pass
 
-func unload_item(item, index):
+func unload_item():
 	_clear_pickup_slot_item()
 
 	# if item:
@@ -75,8 +75,3 @@ func is_loaded():
 
 func get_pickup_item():
 	return pickup_slot_item
-
-#######
-func _on_area_2d_body_entered(body):
-	# print(body)
-	pass

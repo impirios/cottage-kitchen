@@ -24,7 +24,11 @@ func _process(_delta):
 		populate_inventory()
 	pass
 
+
 func populate_inventory():
+	call_deferred("populate_inventory_deffered")
+
+func populate_inventory_deffered():
 	var slots: Array[InventorySlot2] = []
 
 	# clear slots
@@ -51,7 +55,6 @@ func populate_inventory():
 		inventory_items_container.add_child(slots[index])
 		col += 1
 	
-	print("init inventory manager")
 	inventory_manager.destructure()
 	inventory_manager.set_slots(slots)
 	inventory_manager.inventory_items = inventory_items
